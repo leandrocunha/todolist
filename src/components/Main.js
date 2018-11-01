@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Done from './Done';
+import Form from './Form';
 import ToDo from './ToDo';
 import clearCheckeds from '../utils';
 
@@ -13,16 +14,6 @@ const Title = styled.h1`
   font-size: 32px;
   font-weight: 600;
   margin: 50px 0 15px 0;
-`;
-
-const Input = styled.input`
-  border: #cecece 1px solid;
-  border-radius: 100px;
-  box-sizing: border-box;
-  font-size: 14px;
-  outline: none;
-  padding: 12px 20px;
-  width: 100%;
 `;
 
 class Main extends Component {
@@ -83,10 +74,7 @@ class Main extends Component {
     return (
       <Notepad>
         <Title>Re:Minder</Title>
-        <form onSubmit={this.addTask}>
-          <Input name="task" placeholder="type your task..." />
-        </form>
-
+        <Form submit={this.addTask} />
         <ToDo tasks={todo} complete={this.completeTask} remove={this.remove} />
         <Done
           tasks={done}

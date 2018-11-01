@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Empty from './Empty';
 
 const Title = styled.h2`
   color: #111;
@@ -24,14 +25,6 @@ const Task = styled.div`
     border: none;
     margin: 0;
   }
-`;
-
-const Empty = styled.div`
-  color: #cecece;
-  font-size: 12px;
-  padding: 30px 0;
-  text-transform: uppercase;
-  text-align: center;
 `;
 
 const RemoveBtn = styled.button`
@@ -62,7 +55,7 @@ const ToDo = ({ complete, remove, tasks }) => (
           </Task>
         ))
       ) : (
-        <Empty>Great! You don't have tasks to-do.</Empty>
+        <Empty message="Great! You don't have tasks to-do." />
       )}
     </List>
   </div>
