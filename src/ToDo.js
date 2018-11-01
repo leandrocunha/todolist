@@ -17,6 +17,11 @@ const Task = styled.div`
   border-bottom: #ccc 1px solid;
   padding: 10px;
   margin: 0 0 10px;
+
+  &:last-of-type {
+    border: none;
+    margin: 0;
+  }
 `;
 
 const Empty = styled.div`
