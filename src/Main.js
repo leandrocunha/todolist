@@ -41,6 +41,7 @@ class Main extends Component {
     const newTasks = this.state.todo;
 
     newTasks.push(task.value);
+    task.value = '';
     this.setState({ todo: newTasks });
   }
 
