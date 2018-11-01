@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Done from './Done';
 import ToDo from './ToDo';
+import clearCheckeds from './utils';
 
 const Notepad = styled.div`
   width: 450px;
@@ -54,6 +55,7 @@ class Main extends Component {
     todo.splice(index, 1);
 
     this.setState({ todo, done: newTasks });
+    clearCheckeds();
   }
 
   uncompleteTask(index) {
@@ -65,6 +67,7 @@ class Main extends Component {
     done.splice(index, 1);
 
     this.setState({ todo: newTasks, done });
+    clearCheckeds();
   }
 
   remove(index, list) {
