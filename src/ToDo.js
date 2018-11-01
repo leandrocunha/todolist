@@ -30,7 +30,23 @@ const Empty = styled.div`
   text-align: center;
 `;
 
-const ToDo = ({ complete, tasks }) => (
+const RemoveBtn = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  float: right;
+  font-weight: 300;
+  font-size: 11px;
+  padding: 5px 0;
+  color: #cecece;
+  text-transform: uppercase;
+
+  &:hover {
+    color: #f00;
+  }
+`;
+
+const ToDo = ({ complete, remove, tasks }) => (
   <div>
     <Title>To-Do</Title>
     <List>
@@ -38,6 +54,7 @@ const ToDo = ({ complete, tasks }) => (
         tasks.map((task, index) => (
           <Task key={index}>
             <input onChange={() => complete(index)} type="checkbox" /> {task}
+            <RemoveBtn onClick={() => remove(index, 'todo')}>delete</RemoveBtn>
           </Task>
         ))
       ) : (

@@ -31,7 +31,23 @@ const Empty = styled.div`
   text-align: center;
 `;
 
-const Done = ({ tasks, uncomplete }) => (
+const RemoveBtn = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  float: right;
+  font-weight: 300;
+  font-size: 11px;
+  padding: 5px 0;
+  color: #cecece;
+  text-transform: uppercase;
+
+  &:hover {
+    color: #f00;
+  }
+`;
+
+const Done = ({ remove, tasks, uncomplete }) => (
   <div>
     <Title>Done</Title>
     <List>
@@ -39,6 +55,7 @@ const Done = ({ tasks, uncomplete }) => (
         tasks.map((task, index) => (
           <Task key={index}>
             <input onChange={() => uncomplete(index)} type="checkbox" /> {task}
+            <RemoveBtn onClick={() => remove(index, 'done')}>delete</RemoveBtn>
           </Task>
         ))
       ) : (

@@ -27,6 +27,7 @@ class Main extends Component {
     this.addTask = this.addTask.bind(this);
     this.completeTask = this.completeTask.bind(this);
     this.uncompleteTask = this.uncompleteTask.bind(this);
+    this.remove = this.remove.bind(this);
   }
 
   addTask(e) {
@@ -61,6 +62,13 @@ class Main extends Component {
     this.setState({ todo: newTasks, done });
   }
 
+  remove(index, list) {
+    const tasks = this.state[list];
+
+    tasks.splice(index, 1);
+    this.setState({ [list]: tasks });
+  }
+
   render() {
     const { done, todo } = this.state;
 
@@ -71,8 +79,12 @@ class Main extends Component {
           <Input name="task" placeholder="type your task..." />
         </form>
 
-        <ToDo tasks={todo} complete={this.completeTask} />
-        <Done tasks={done} uncomplete={this.uncompleteTask} />
+        <ToDo tasks={todo} complete={this.completeTask} remove={this.remove} />
+        <Done
+          tasks={done}
+          uncomplete={this.uncompleteTask}
+          remove={this.remove}
+        />
       </Notepad>
     );
   }
