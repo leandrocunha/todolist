@@ -17,6 +17,12 @@ const Task = styled.div`
   border-bottom: #ccc 1px solid;
   padding: 10px;
   margin: 0 0 10px;
+  text-decoration: line-through;
+
+  &:last-of-type {
+    border: none;
+    margin: 0;
+  }
 `;
 
 const Empty = styled.div`
@@ -25,21 +31,21 @@ const Empty = styled.div`
   text-align: center;
 `;
 
-const ToDo = ({ complete, tasks }) => (
+const Done = ({ tasks, uncomplete }) => (
   <div>
-    <Title>To-Do</Title>
+    <Title>Done</Title>
     <List>
       {tasks.length ? (
         tasks.map((task, index) => (
           <Task key={index}>
-            <input onChange={() => complete(index)} type="checkbox" /> {task}
+            <input onChange={() => uncomplete(index)} type="checkbox" /> {task}
           </Task>
         ))
       ) : (
-        <Empty>Great! You don't have tasks to-do.</Empty>
+        <Empty>Nothing here.</Empty>
       )}
     </List>
   </div>
 );
 
-export default ToDo;
+export default Done;

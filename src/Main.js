@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Done from './Done';
 import ToDo from './ToDo';
 
 const Notepad = styled.div`
@@ -24,6 +25,8 @@ class Main extends Component {
     super(props);
     this.state = { todo: [], done: [] };
     this.addTask = this.addTask.bind(this);
+    this.completeTask = this.completeTask.bind(this);
+    this.uncompleteTask = this.uncompleteTask.bind(this);
   }
 
   addTask(e) {
@@ -36,8 +39,30 @@ class Main extends Component {
     this.setState({ todo: newTasks });
   }
 
+  completeTask(index) {
+    const { done, todo } = this.state;
+    const completed = todo[index];
+    const newTasks = done;
+
+    newTasks.push(completed);
+    todo.splice(index, 1);
+
+    this.setState({ todo, done: newTasks });
+  }
+
+  uncompleteTask(index) {
+    const { done, todo } = this.state;
+    const uncompleted = done[index];
+    const newTasks = todo;
+
+    newTasks.push(uncompleted);
+    done.splice(index, 1);
+
+    this.setState({ todo: newTasks, done });
+  }
+
   render() {
-    const { todo } = this.state;
+    const { done, todo } = this.state;
 
     return (
       <Notepad>
@@ -46,7 +71,8 @@ class Main extends Component {
           <Input name="task" placeholder="type your task..." />
         </form>
 
-        <ToDo tasks={todo} />
+        <ToDo tasks={todo} complete={this.completeTask} />
+        <Done tasks={done} uncomplete={this.uncompleteTask} />
       </Notepad>
     );
   }
