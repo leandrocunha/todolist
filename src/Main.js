@@ -15,8 +15,12 @@ const Title = styled.h1`
 `;
 
 const Input = styled.input`
+  border: #cecece 1px solid;
+  border-radius: 100px;
+  box-sizing: border-box;
   font-size: 14px;
-  padding: 15px 10px;
+  outline: none;
+  padding: 12px 20px;
   width: 100%;
 `;
 

@@ -3,13 +3,15 @@ import styled from 'styled-components';
 
 const Title = styled.h2`
   color: #111;
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 600;
   margin: 50px 0 15px 0;
 `;
 
 const List = styled.div`
   background-color: #fff;
+  border: #cecece 1px solid;
+  border-radius: 10px;
   padding: 10px;
 `;
 
@@ -26,7 +28,9 @@ const Task = styled.div`
 `;
 
 const Empty = styled.div`
+  color: #cecece;
   font-size: 12px;
+  padding: 30px 0;
   text-transform: uppercase;
   text-align: center;
 `;
