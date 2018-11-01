@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import ToDo from './ToDo';
 
 const Notepad = styled.div`
   width: 450px;
@@ -18,11 +19,37 @@ const Input = styled.input`
   width: 100%;
 `;
 
-const Main = () => (
-  <Notepad>
-    <Title>Re:Minder</Title>
-    <Input placeholder="type your task..." />
-  </Notepad>
-);
+class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { todo: [], done: [] };
+    this.addTask = this.addTask.bind(this);
+  }
+
+  addTask(e) {
+    e.preventDefault();
+
+    const task = document.querySelector('[name=task]');
+    const newTasks = this.state.todo;
+
+    newTasks.push(task.value);
+    this.setState({ todo: newTasks });
+  }
+
+  render() {
+    const { todo } = this.state;
+
+    return (
+      <Notepad>
+        <Title>Re:Minder</Title>
+        <form onSubmit={this.addTask}>
+          <Input name="task" placeholder="type your task..." />
+        </form>
+
+        <ToDo tasks={todo} />
+      </Notepad>
+    );
+  }
+}
 
 export default Main;
