@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Done from './Done';
 import ToDo from './ToDo';
-import clearCheckeds from './utils';
+import clearCheckeds from '../utils';
 
 const Notepad = styled.div`
   width: 450px;
